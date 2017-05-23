@@ -1,10 +1,39 @@
 
 body {
-  background-color: lightblue;
-  font-family: "Georgian", Times, serif;
+  background-color: #FF6347;
+  font-family: "Verdana", "Geneva", Sans-serif;
+  margin-bottom: 20px;
 }
 
-.secondLineTitle {
-  text-indent: 100px;
+.mainQuestion {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
 }
 
+.burgerpic {
+  margin: -80px;
+}
+
+.burgerpic img {
+  display: block;
+  margin: auto;
+  width: 50%;
+}
+
+.mainAnswer {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.newBurger,
+.existingBurger {
+  text-align: center;
+}
+
+.inputRow {
+  margin-top: 40px;
+}

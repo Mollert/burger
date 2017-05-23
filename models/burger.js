@@ -1,10 +1,21 @@
 
-var orm = require("/orm.js");
+var orm = require("../config/orm.js");
 
-selectAll();
+function CreateBurger(burgerName) {
+	this.burgerName = burgerName;
+	this.selectAll = orm.selectAll();
+	this.insertOne = orm.insertOne(burgerName);
+	this.updateOne = orm.updateOne(burgerName);
+	this.deleteOne = orm.deleteOne(burgerName);
+};
 
-insertOne(newBurger);
+//var HotBurger = new CreateBurger("hotBurger");
+//HotBurger.selectAll();
+//console.log(HotBurger.burgerName);
 
-updateOne(updateBurger);
+//module.exports = ?;
 
-module.exports = ;
+//console.log(orm.selectAll());
+
+
+
