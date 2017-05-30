@@ -1,32 +1,35 @@
 
 var express = require("express");
-//var ? = require("../models/burger.js");
+var router = express.Router()
 var orm = require("../config/orm.js");
+var burger = require("../models/burger.js");
 
-var HotBurger = new CreateBurger("hotBurger");
-//console.log(HotBurger.burgerName);
+router.get("/", function(req, res) {
+  burger.selectAll(function(data) {
+    
+    console.log(data);
 
-module.exports = function (app) {
-
-  app.get("/", function(req, res) {
-    res.render("home");
+    var allBurgers = {
+      burgers: data
+    };
+    res.render("index", allBurgers);
   });
+});
 
-  app.get("/", function(req, res) {
-    var list = orm.selectAll();
-    orm.selectAll();
-    res.render("index", { existBurger: list });
-  });
-
-  app.get("/", function(req, res) {
-    var list = orm.selectAll();
-    orm.selectAll();
-    res.render("index", { newBurger: list });
-  });
-
-  app.post("/", function(req, res) {
-    orm.insertOne(req.body.burgerName);
+router.post("/", function(req, res) {
+  burger.insertOne(["burger_name", "devoured"],
+    [req.body.burger_name, req.body.devoured],
+    function() {
       res.redirect("/");
   });
+});
 
-};
+router.put("/:id", function(req, res) {
+  var which = "id = " + req.parms.id;
+  burger.updateOne({devoured: req.body.devoured},
+  which, function() {
+      res.redirect("/");
+  });
+});
+
+module.exports = router

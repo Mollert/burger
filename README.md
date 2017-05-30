@@ -1,1 +1,1 @@
-Have a lot set up but not close to running yet.
+A lot has been done - but more to do until running.

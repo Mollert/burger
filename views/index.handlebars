@@ -5,7 +5,7 @@
 				<p>What type of Burger do you like?</p>
 			</div>
 			<div class="burgerpic">
-				<img src="../public/assets/img/burger.png" alt="Burger" style="width:500px;height:500px;">
+				<img src="/assets/img/burger.png" alt="Burger" style="width:500px;height:500px;">
 			</div>
 			<div class="mainAnswer">
 				<p>It's a bean burger for me. . . .</p>
@@ -18,7 +18,7 @@
 						{{#each xxxx}}
 							<li>
 								<p>
-									{{}}
+									{{"Home Here"}}
 								</p>
 							</li>
 						{{/each}}
@@ -30,8 +30,9 @@
 			</div>
 			<div class="col-md-6">
 				<div class=existingBurger>
+					<h4>Here are some bugers already devoured.</h4>
 					<ul>
-						{{#each existBurger}}
+						{{#each allBurgers}}
 							<li>
 								<p>
 									{{this.burger_name}}
@@ -39,8 +40,6 @@
 							</li>
 						{{/each}}
 					</ul>
-<!--					<p>Existing burger goes here</p> -->
-
 				</div>
 			</div>
 		</div>

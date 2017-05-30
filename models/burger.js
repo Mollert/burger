@@ -1,21 +1,25 @@
 
 var orm = require("../config/orm.js");
 
-function CreateBurger(burgerName) {
-	this.burgerName = burgerName;
-	this.selectAll = orm.selectAll();
-	this.insertOne = orm.insertOne(burgerName);
-	this.updateOne = orm.updateOne(burgerName);
-	this.deleteOne = orm.deleteOne(burgerName);
+var burger = {
+	selectAll: function(cb) {
+		orm.selectAll(function(res) {
+//			console.log(res);
+			return(res);
+		});
+	},
+	insertOne: function(newBurger, eaten, cb) {
+		orm.insertOne(newBurger, eaten, function(res) {
+			return(res);
+		});
+	},
+	updateOne: function(updateBurger, which, cb) {
+		orm.updateOne(updateBurger, which, function(res) {
+			return(res);
+		});
+	}
 };
+//console.log(burger.selectAll());
 
-//var HotBurger = new CreateBurger("hotBurger");
-//HotBurger.selectAll();
-//console.log(HotBurger.burgerName);
-
-//module.exports = ?;
-
-//console.log(orm.selectAll());
-
-
+module.exports = burger;
 
