@@ -5,10 +5,7 @@ var orm = require("../config/orm.js");
 var burger = require("../models/burger.js");
 
 router.get("/", function(req, res) {
-  burger.selectAll(function(data) {
-    
-    console.log(data);
-
+  burger.selectAll("burgers", function(data) {
     var allBurgers = {
       burgers: data
     };
@@ -17,15 +14,14 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-  burger.insertOne(["burger_name", "devoured"],
-    [req.body.burger_name, req.body.devoured],
+  burger.insertOne("burgers", req.body.addBurger, false,
     function() {
       res.redirect("/");
   });
 });
 
 router.put("/:id", function(req, res) {
-  var which = "id = " + req.parms.id;
+  var which = "id = " + req.parms.eaten;
   burger.updateOne({devoured: req.body.devoured},
   which, function() {
       res.redirect("/");

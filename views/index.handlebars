@@ -1,63 +1,68 @@
 
 <div class="container">
   	<div class="row">
-			<div class="mainQuestion">
-				<p>What type of Burger do you like?</p>
-			</div>
-			<div class="burgerpic">
-				<img src="/assets/img/burger.png" alt="Burger" style="width:500px;height:500px;">
-			</div>
-			<div class="mainAnswer">
-				<p>It's a bean burger for me. . . .</p>
-			</div>
+		<div class="mainQuestion">
+			<p>What type of Burger do you like?</p>
 		</div>
-		<div class="row">
-			<div class="col-md-6">
-				<div class=newBurger>
-					<ul>
-						{{#each xxxx}}
+		<div class="burgerpic">
+			<img src="/assets/img/burger.png" alt="Burger" style="width:500px;height:500px;">
+		</div>
+		<div class="mainAnswer">
+			<p>It's a bean burger for me. . . .</p>
+		</div>
+	</div>
+	<div class="row">
+
+		<div class="col-md-6">
+			<div class="newBurger">
+				<h4>Your burgers to devour.</h4>
+				<ul>
+					{{#each burgers}}
+						{{#unless this.devoured}}
 							<li>
 								<p>
-									{{"Home Here"}}
+									{{this.burger_name}}
+
+									<form action="/{{this.id}}?_method=PUT" method="POST">
+										<input type="hidden" name="eaten" value="true">
+										<button type="submit" class="btn btn-primary btn-sm">Devoured?</button>
+									</form>
+
 								</p>
 							</li>
-						{{/each}}
-					</ul>
-
-<!--					<p>New burger goes here</p> -->
-
-				</div>
+						{{/unless}}
+					{{/each}}
+				</ul>
 			</div>
-			<div class="col-md-6">
-				<div class=existingBurger>
-					<h4>Here are some bugers already devoured.</h4>
-					<ul>
-						{{#each allBurgers}}
+		</div>
+		<div class="col-md-6">
+			<div class="existingBurger">
+				<h4>Here are some burgers already devoured.</h4>
+				<ul>
+					{{#each burgers}}
+						{{#if this.devoured}}
 							<li>
 								<p>
 									{{this.burger_name}}
 								</p> 
 							</li>
-						{{/each}}
-					</ul>
-				</div>
+						{{/if}}
+					{{/each}}
+				</ul>
 			</div>
 		</div>
+	</div>
 	<div class="row">
 		<div class="inputRow">
 			<div class="col-md-4">
 			</div>
-			<div class="col-md-4">
-				<form action="/" method="POST">
-					<div class="burgerInput">
-						<input type="text" class="form-control input-lg" name="burgerName" placeholder="Type In Your Burger Here">
+			<div class="col-md-8">
+				<form class="create-burger" action="/" method="POST">
+					<div class="form-group">
+						<input type="text" class="form-control input-lg" name="addBurger" placeholder="Type In Your Burger Here">
 					</div>
+					<button type="submit" class="btn btn-primary btn-lg">Then submit it here</button>
 				</form>
-			</div>
-			<div class="col-md-4">
-				<div class="burgerSubmit">
-					<a class="btn btn-primary btn-lg" id="submitBurger" role="button">Then submit it here</a>
-				</div>
 			</div>
 		</div>
 	</div>
