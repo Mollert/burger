@@ -26,12 +26,16 @@ body {
   font-size: 30px;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
 .newBurger,
 .existingBurger {
   text-align: center;
+}
+
+li {
+  display: inline;
 }
 
 .inputRow {

@@ -20,10 +20,9 @@ router.post("/", function(req, res) {
   });
 });
 
-router.put("/:id", function(req, res) {
-  var which = "id = " + req.parms.eaten;
-  burger.updateOne({devoured: req.body.devoured},
-  which, function() {
+router.post("/id/:id", function(req, res) {
+  var which = req.params.id;
+  burger.updateOne("burgers", which, function() {
       res.redirect("/");
   });
 });
